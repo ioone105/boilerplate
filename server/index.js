@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 5000
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookeParser = require('cookie-parser');
@@ -27,7 +27,9 @@ app.get('/', (req, res) => {
   res.send('Hello World! 안녕하쇼 잘되라12')
 })
 
-
+app.get('/api/hello', (req,res) => {
+  res.send("안녕하세용^^")
+})
 
 app.post('/api/users/resister', (req, res) => {
 
