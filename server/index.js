@@ -31,7 +31,7 @@ app.get('/api/hello', (req,res) => {
   res.send("안녕하세용^^")
 })
 
-app.post('/api/users/resister', (req, res) => {
+app.post('/api/users/register', (req, res) => {
 
   // 회원가입할때 필요한 정보들을 client에서 가져오면
   // 그것을 데이터 베이스에 넣어준다
@@ -39,9 +39,9 @@ app.post('/api/users/resister', (req, res) => {
   const user = new User(req.body)
 
   user.save((err, user) => {
-    if(err) return res.json({ success: false, err })
+    if(err) return res.json({ registerSuccess: false, err })
     return res.status(200).json({
-      success: true
+      registerSuccess: true
     })
   })
 
@@ -79,7 +79,7 @@ app.post('/api/users/login', (req, res) => {
   })
 })
 
-app.get('/api/users', auth, (req, res) => {
+app.get('/api/users/auth', auth, (req, res) => {
 
   // 여기까지 미들웨어를 통과해 왔다는 이야기는 authentication이 true 라는 말.
   res.status(200).json({
